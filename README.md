@@ -1,3 +1,6 @@
+# Design Link Figma
+--> https://www.figma.com/design/v6uSspz4fgAsyXY2bXSkXJ/Job-Application-Tracker?m=auto&t=XL9VVmMilzxhV0yj-6
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
