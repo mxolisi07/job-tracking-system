@@ -21,7 +21,7 @@ function LandingPage() {
           <FaBars />
         </div>
 
-        <div className={`nav-links ${menuOpen ? 'open' : ""}`}>
+        <div className={`nav-links ${menuOpen ? "active" : ""}`}>
           <button onClick={() => navigate("/")}>Home</button>
           <button onClick={() => navigate("/login")}>Login</button>
           <button onClick={() => navigate("/signup")}>Sign Up</button>

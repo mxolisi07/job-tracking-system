@@ -42,8 +42,15 @@ body {
 
 .nav-links {
   gap: 20px;
-  
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
+}
+
+.nav-links.open {
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-links button {
@@ -66,7 +73,6 @@ body {
   color: black;
 }
 
-/* Hero Section */
 .hero {
   text-align: center;
   padding: 80px 20px;
@@ -103,7 +109,6 @@ body {
   background-color: #f0f0f0;
 }
 
-/* Responsive adjustments */
 @media (max-width: 1024px) {
   .hero h1 {
     font-size: 32px;
@@ -120,11 +125,11 @@ body {
 
 @media (max-width: 768px) {
   .hamburger {
-    display: block; /* show hamburger */
+    display: block; 
   }
 
   .nav-links {
-    display: none; /* hide links by default */
+    display: none; 
     flex-direction: column;
     position: absolute;
     top: 60px;
@@ -136,7 +141,7 @@ body {
   }
 
   .nav-links.active {
-    display: flex; /* show links when menuOpen = true */
+    display: flex; 
   }
 
   .nav-links button {
