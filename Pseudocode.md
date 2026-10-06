@@ -9,6 +9,19 @@ Import React
 Import React Router (BrowserRouter, Routes, Route, NavLink)
 
 Function App()
+
+  DISPLAY Topbar Navigation
+        LINKS:
+            - Login
+            - Sign Up
+
+    DISPLAY Hero Section
+        SHOW headline: "Track your job applications with ease"
+        SHOW subtext: "Stay organized and monitor your progress — know which applications are successful, pending, interviewed, or rejected."
+        SHOW buttons:
+            - "Get Started" → SignUpPage
+            - "Login" → LoginPage
+
   Authentication Flow
     DISPLAY LoginPage
         INPUT email, password
@@ -38,7 +51,10 @@ Function App()
 	    - Search bar
 
  Setup Routing
-    "/" -> HomePage
+    "/" -> landingPage
+    "/login" -> LoginPage
+    "/signup" -> SignUpPage
+    "/home" -> HomePage
     "/applications" -> ApplicationsPage
     "/applications/:id" -> ApplicationDetailsPage
     "/stats" -> StatsPage
