@@ -24,14 +24,13 @@ function LoginPage() {
 
   return (
     <div className="login-container">
-      {/* Logo + Title */}
+      
       <div className="login-header">
         <FaBriefcase className="logo-icon2" />
         <h1 className="logo-text2">Job Tracker</h1>
       </div>
       <p className="welcome-text">Welcome back!!! Login to continue.</p>
 
-      {/* Form */}
       <div className="login-form">
         <label>Username</label>
         <input

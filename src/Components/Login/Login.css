@@ -92,7 +92,7 @@
 }
 
 .cancel-btn:hover {
-  background: #5c0aa3;
+  background: #8297b6;
 }
 
 .login-btn {
@@ -105,10 +105,9 @@
 }
 
 .login-btn:hover {
-  background: #5c0aa3;
+  background: #63457e;
 }
 
-/* Responsive */
 @media (max-width: 480px) {
   .login-container {
     margin: 20px;

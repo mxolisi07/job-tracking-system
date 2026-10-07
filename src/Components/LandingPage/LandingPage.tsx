@@ -10,7 +10,6 @@ function LandingPage() {
 
   return (
     <div>
-      {/* Topbar */}
       <nav className="topbar">
         <div className="logo" onClick={() => navigate("/")}>
           <FaBriefcase className="logo-icon" />
@@ -28,7 +27,6 @@ function LandingPage() {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section className="hero" >
         <h1>Track your job applications with ease.</h1>
         <p>Stay organized and monitor your progress — 

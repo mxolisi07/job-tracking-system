@@ -1,13 +1,63 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "Mxoliswa",
-            "username": "admin",
-            "password": "admin123",
-            "confirmPassword": "admin123",
-            "email": "mxoliswa@example.com"
-        }
-    ],
-    "applications": []
+  "users": [
+    {
+      "id": "1",
+      "name": "Mxoliswa",
+      "username": "admin",
+      "password": "admin123",
+      "confirmPassword": "admin123",
+      "email": "mxoliswa@example.com"
+    }
+  ],
+  "applications": [
+    {
+      "company": "mLab",
+      "employmentType": "Internship",
+      "contact": "078562545",
+      "salary": "R10,000 - R20,000",
+      "dateApplied": "2026-09-01",
+      "role": "Software Developer",
+      "location": "Kimberley",
+      "duties": "I'm a software developer. Love it.",
+      "status": "Applied",
+      "id": "oF7-Os9gG2M"
+    },
+    {
+      "company": "Edunova SEF",
+      "employmentType": "Contract",
+      "contact": "085652312",
+      "salary": "R20,000 - R40,000",
+      "dateApplied": "2026-08-03",
+      "role": "Data Analyst",
+      "location": "Eastern Cape",
+      "duties": "I'm responsible for supervising the team.",
+      "status": "Successful",
+      "id": "humaTwlpXVw"
+    },
+    {
+      "company": "Google",
+      "employmentType": "Part-time",
+      "contact": "0785256523",
+      "salary": "R10,000 - R20,000",
+      "dateApplied": "2026-09-17",
+      "role": "Data Analyst",
+      "location": "Wolmaransstad",
+      "duties": "I am the data analyst",
+      "status": "Rejected",
+      "id": "Fp_ysqifUF0"
+    },
+    {
+      "company": "Youtube",
+      "employmentType": "Full-time",
+      "contact": "0741523565",
+      "salary": "R40,000+",
+      "dateApplied": "2026-08-05",
+      "role": "Project Manager",
+      "location": "Klerksdorp",
+      "duties": "I am the scrum master",
+      "status": "Interviewed",
+      "id": "6cPASo4OAuY"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
