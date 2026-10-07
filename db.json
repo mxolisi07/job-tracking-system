@@ -59,5 +59,7 @@
       "id": "6cPASo4OAuY"
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json"
+  "$schema": [
+    "./node_modules/json-server/schema.json"
+  ]
 }

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AddJob.css";
-import { FaBriefcase, FaBars, FaSearch } from "react-icons/fa";
+import { FaBriefcase } from "react-icons/fa";
 
 function AddJobPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
+
   const [formData, setFormData] = useState({
     company: "",
     employmentType: "",
