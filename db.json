@@ -1,3 +1,13 @@
 {
-    "users": []
+    "users": [
+        {
+            "id": 1,
+            "name": "Mxoliswa",
+            "username": "admin",
+            "password": "admin123",
+            "confirmPassword": "admin123",
+            "email": "mxoliswa@example.com"
+        }
+    ],
+    "applications": []
 }
