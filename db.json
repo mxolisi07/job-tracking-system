@@ -7,6 +7,18 @@
       "password": "admin123",
       "confirmPassword": "admin123",
       "email": "mxoliswa@example.com"
+    },
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "id": "1QuOsStJhaw"
+    },
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "id": "Cp9HlIqI3GM"
     }
   ],
   "applications": [
@@ -59,7 +71,5 @@
       "id": "6cPASo4OAuY"
     }
   ],
-  "$schema": [
-    "./node_modules/json-server/schema.json"
-  ]
+  "$schema": "./node_modules/json-server/schema.json"
 }

@@ -9,6 +9,7 @@
   background: #e6f0ff;
   padding: 10px 20px;
   position: relative;
+  border-radius: 8px;
 }
 
 .logo2 {
@@ -135,6 +136,14 @@
 .tabs .active {
   background: #e6f0ff;
   color: rgb(3, 3, 3);
+}
+
+.sort-select {
+  padding: 8px;
+  border: 1px solid #f5f5f5;
+  border-radius: 8px;
+  margin: 10px 0;
+  cursor: pointer;
 }
 
 .applications-title {
@@ -341,6 +350,11 @@
 
   .summary-boxes {
     flex-direction: column;
+  }
+
+  .sort-select {
+    width: 100%;
+    font-size: 14px;
   }
 
   .applications-list {

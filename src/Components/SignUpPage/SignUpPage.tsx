@@ -8,16 +8,28 @@ function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const navigate = useNavigate();
 
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {};
+    if (!name.trim()) newErrors.name = "Name is required.";
+    if (!email.trim()) newErrors.email = "Email is required.";
+    if (!password.trim()) newErrors.password = "Password is required.";
+    if (!confirmPassword.trim()) newErrors.confirmPassword = "Confirm Password is required.";
+    if (password && confirmPassword && password !== confirmPassword) {
+      newErrors.confirmPassword = "Password do not match."; }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  }
+
   const handleSignUp = async () => {
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+    if (!validateForm()) {
+      alert("Please make sure to have inserted valid data")
       return;
     }
-
+    
     const newUser = { name, email, password };
-
     const response = await fetch("http://localhost:5000/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -50,6 +62,7 @@ function SignUpPage() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        {errors.name && <span className="error">{errors.name}</span>}
 
         <label>Email</label>
         <input
@@ -58,6 +71,7 @@ function SignUpPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        {errors.email && <span className="error">{errors.email}</span>}
 
         <label>Password</label>
         <input
@@ -66,6 +80,7 @@ function SignUpPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {errors.password && <span className="error">{errors.password}</span>}
 
         <label>Confirm Password</label>
         <input
@@ -74,6 +89,7 @@ function SignUpPage() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
+        {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
 
         <div className="signup-links">
           <a href="/login">Already have an account? Login</a>

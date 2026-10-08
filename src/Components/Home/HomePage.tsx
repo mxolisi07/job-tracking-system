@@ -26,6 +26,7 @@ function HomePage() {
   const [editingApp, setEditingApp] = useState<Application | null>(null);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [viewingApp, setViewingApp] = useState<Application | null>(null);
+  const [sortOption, setSortOption] = useState("dateApplied");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,6 +47,14 @@ function HomePage() {
   const interviewCount = applications.filter((a) => a.status === "Interviewed").length;
   const rejectedCount = applications.filter((a) => a.status === "Rejected").length;
   const successfulCount = applications.filter((a) => a.status === "Successful").length;
+
+  const sortedApps = [...filteredApps].sort((a, b) => {
+  if (sortOption === "company") return a.company.localeCompare(b.company);
+  if (sortOption === "role") return a.role.localeCompare(b.role);
+  if (sortOption === "status") return a.status.localeCompare(b.status);
+  if (sortOption === "dateApplied") return new Date(a.dateApplied).getTime() - new Date(b.dateApplied).getTime();
+  return 0;
+});
 
   const handleDelete = async (id: number) => {
     await fetch(`http://localhost:5000/applications/${id}`, { method: "DELETE" });
@@ -139,6 +148,16 @@ function HomePage() {
           ))}
         </div>
 
+        <select className="sort-select" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+
+          <option value="dateApplied">Sort by Date</option>
+          <option value="company">Sort by Company</option>
+          <option value="role">Sort by Role</option>
+          <option value="status">Sort by Status</option>
+
+        </select>
+      
+
         <button className="logout-btn" onClick={() => navigate("/")}>
           Logout
         </button>
@@ -146,25 +165,28 @@ function HomePage() {
 
       <h3 className="applications-title">Applications</h3>
       <div className="applications-list">
-        {filteredApps.map((app) => (
-          <div key={app.id} className={`application-card ${app.status.toLowerCase()}`}>
-            <p><FaBriefcase /> Company name: {app.company}</p>
-            <p><FaCalendar /> Date applied: {app.dateApplied}</p>
-            <p className="status">Status: {app.status}</p>
-            <p><FaUserTie /> Role: {app.role}</p>
-            <p>Job duties: {app.duties}</p>
-            <div className="card-actions">
-                <FaEye title="View" onClick={() => setViewingApp(app)} />
-                <FaEdit title="Edit" onClick={() => setEditingApp(app)} />
-                <FaTrash title="Delete" onClick={() => handleDelete(app.id)} />
-            </div>
+
+      {sortedApps.map((app) => (
+        <div key={app.id} className={`application-card ${app.status.toLowerCase()}`}>
+          <h3><FaBriefcase /> {app.company}</h3>
+          <p><FaCalendar /> {app.dateApplied}</p>
+          <p className="status">Status: {app.status}</p>
+          <p><FaUserTie /> {app.role}</p>
+          <p><FaMapMarkerAlt /> {app.location}</p>
+          <p>{app.duties}</p>
+          <div className="card-actions">
+            <FaEye title="View" onClick={() => setViewingApp(app)} />
+            <FaEdit title="Edit" onClick={() => setEditingApp(app)} />
+            <FaTrash title="Delete" onClick={() => handleDelete(app.id)} />
           </div>
-        ))}
+        </div>
+  ))}
+
       </div>
 
-        {viewingApp && (
-  <div className="modal-overlay">
-    <div className="modal">
+      {viewingApp && (
+      <div className="modal-overlay">
+      <div className="modal">
       <h2>View Job Details</h2>
 
       <p><FaBriefcase /> <strong>Company:</strong> {viewingApp.company}</p>
@@ -184,7 +206,7 @@ function HomePage() {
   </div>
 )}
 
-        {editingApp && (
+      {editingApp && (
         <div className="modal-overlay">
           <div className="modal">
             <h2>Edit Application</h2>

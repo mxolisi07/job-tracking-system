@@ -6,15 +6,30 @@ import { FaBriefcase } from 'react-icons/fa6'
 function LoginPage() {
   const navigate = useNavigate()
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("")
+  const [errors, setErrors] = useState<{ [key: string]: string }>({})
+
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {}
+    if (!email.trim()) newErrors.email ="Email is required."
+    if (!password.trim()) newErrors.password ="Password is required."
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
   const handleLogin = async () => {
+    if (!validateForm()) {
+      alert("Please make sure that your data is correct.")
+      return
+    }
+
     const response = await fetch(
       `http://localhost:5000/users?email=${email}&password=${password}`
-    );
-    const data = await response.json();
+    )
+    const users = await response.json()
+    const user = users.find((u: any) => u.email === email && u.password === password)
 
-    if (data.length > 0) {
+    if (user) {
       alert("Login successful!");
       navigate("/home");
     } else {
@@ -39,6 +54,7 @@ function LoginPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        {errors.email && <span className="error">{errors.email}</span>}
 
         <label>Password</label>
         <input
@@ -47,6 +63,7 @@ function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {errors.password && <span className="error">{errors.password}</span>}
 
         <div className="login-links">
           <a className="link-forgot" href="/forgot">Forgotten Password?</a>
